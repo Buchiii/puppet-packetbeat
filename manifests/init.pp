@@ -121,8 +121,14 @@ class packetbeat (
   case $ensure {
     'present': {
       Class['packetbeat::install']
-      ->Class['packetbeat::config']
-      ~>Class['packetbeat::service']
+      -> Class['packetbeat::config']
+      -> Class['packetbeat::service']
+
+      Class['packetbeat::install']
+      ~> Class['packetbeat::service']
+
+      Class['packetbeat::config']
+      ~> Class['packetbeat::service']
     }
     default: {
       Class['packetbeat::service']

@@ -21,7 +21,7 @@ class packetbeat::repo inherits packetbeat {
   }
 
   if ($packetbeat::manage_repo == true) and ($packetbeat::ensure == 'present') {
-    case $facts['osfamily'] {
+    case $facts['os']['family'] {
       'Debian': {
         include ::apt
         if !defined(Apt::Source['beats']) {

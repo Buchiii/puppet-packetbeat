@@ -48,7 +48,7 @@
 # @param max_procs limit the amount of CPU resources packetbeat uses to this many CPU cores
 #
 class packetbeat (
-  String $beat_name                                                   = $::hostname,
+  String $beat_name                                                   = $facts['networking']['hostname'],
   Boolean $fields_under_root                                          = false,
   Hash $queue                                                         = {
     'mem' => {
